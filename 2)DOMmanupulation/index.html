@@ -26,6 +26,7 @@
       <li class="list-group-item">Item 2</li>
       <li class="list-group-item">Item 3</li>
       <li class="list-group-item">Item 4</li>
+      <li>Item5</li>
     </ul>
    </div>
   </div>
@@ -57,7 +58,7 @@
 // console.log(add.innerText);
 
 
-//by classname
+// //by classname
 let itm=document.getElementsByClassName("list-group-item");
 itm[2].style.backgroundColor="green";
 
@@ -65,6 +66,16 @@ itm[2].style.backgroundColor="green";
 for(let i=0;i<itm.length;i++){
 itm[i].style.fontWeight="bold";
 }
+
+let itm1=document.getElementsByTagName("li");
+
+
+//to make all list elements bold 
+for(let i=0;i<itm1.length;i++){
+itm1[i].style.color="blue";
+}
+
+
   </script>
 </body>
 </html>
