@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body >
+    <div class="container rounded text-primary fw-bold col-8 p-4 position-absolute top-50 start-50 translate-middle" style="border: 1px solid lightgray;">
+    <form>
+        <div class="mb-2 rounded col-10 col-sm-12 m-auto d-flex flex-column">
+            <label for="exampleFormControlInput1" class="form-label">Username</label>
+            <input type="name" class="form-control" name="data" id="data" placeholder="Enter your username">
+          </div>
+          <div class="mb-3 rounded d-flex flex-column col-10 col-sm-12 m-auto">
+            <label for="exampleFormControlInput1" class="form-label">Email</label>
+            <input type="email" class="form-control" email="data" id="em" placeholder="Enter your Email">
+          </div>
+          <div class="mb-3 rounded d-flex flex-column col-10 col-sm-12  m-auto">
+            <label for="exampleFormControlInput1" class="form-label">Password</label>
+            <input type="password" class="form-control" password="data" id="pass" placeholder="Enter your password">
+          </div>
+        <div class="d-grid gap rounded d-flex flex-column col-4 m-auto">
+            <button type="button" class="btn btn-primary" onclick="sConsole(event)">Submit</button>
+        </div>
+        <div class="d-flex justify-content-between fw-light text-danger justify-content-center col-sm-12 col-md-10 mt-3 mb-6 col-10 m-auto">
+            <span>Create an Account</span>
+            <span>Forgot Password?</span>
+        </div>
+    </form>
+    </div>
+
+<script>
+    function sConsole(event){
+        event.preventDefault();
+  var data = document.getElementById("data").value;
+  var data1 = document.getElementById("em").value;
+  var data2 = document.getElementById("pass").value;
+  console.log(data+" "+data1+" "+data2);
+
+    }
+</script>
+</body>
+</html>
