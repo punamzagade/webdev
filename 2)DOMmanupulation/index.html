@@ -32,30 +32,39 @@
 
 
   <script>
-console.log(document);
-console.log(document.body);
-console.log(document.head);
-console.log(document.childNodes);
-console.log(document.doctype);
-console.log(document.images);
-console.log(document.list);
-console.log(document.forms);
-console.log(document.all);
-console.log(document.all[10]);
-let title=document.getElementById("header-title");
-// title.textContent="products";
-// title.innerHTML="newproduct";
-title.style.borderBottom="3px solid red";
-document.getElementById("main-header").style.borderBottom="4px solid black";
+// console.log(document);
+// console.log(document.body);
+// console.log(document.head);
+// console.log(document.childNodes);
+// console.log(document.doctype);
+// console.log(document.images);
+// console.log(document.list);
+// console.log(document.forms);
+// console.log(document.all);
+// console.log(document.all[10]);
+// let title=document.getElementById("header-title");
+// // title.textContent="products";
+// // title.innerHTML="newproduct";
+// title.style.borderBottom="3px solid red";
+// document.getElementById("main-header").style.borderBottom="4px solid black";
 
-let add=document.querySelector("h2");
-add.innerHTML="<h1>ADD ITEMS</h1>";
-add.style.color="green";
-// add.textContent="green";
-// add.innerText="123"
-console.log(add.textContent);
-console.log(add.innerText);
+// let add=document.querySelector("h2");
+// add.innerHTML="<h1>ADD ITEMS</h1>";
+// add.style.color="green";
+// // add.textContent="green";
+// // add.innerText="123"
+// console.log(add.textContent);
+// console.log(add.innerText);
 
+
+//by classname
+let itm=document.getElementsByClassName("list-group-item");
+itm[2].style.backgroundColor="green";
+
+//to make all list elements bold 
+for(let i=0;i<itm.length;i++){
+itm[i].style.fontWeight="bold";
+}
   </script>
 </body>
 </html>
