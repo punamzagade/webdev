@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background-image: url("img/background car image.png");
+        object-fit: cover;
+        background-position: center;
+        overflow: hidden;
+    }
+    .formr{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .loginp{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;border-radius: 10px;
+        margin-top: 5%;
+        width: 40%;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 10px 10px 33px 0px rgba(0,0,0,0.75);
+        -webkit-box-shadow: 10px 10px 33px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 10px 10px 33px 0px rgba(0,0,0,0.75);
+    }
+    .in{
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+    }
+    label{
+        color: blue;
+        font-size: 20px;
+        font-weight: 600;
+        margin-top: 10px;
+    }
+    input{
+        width: 100%;
+        padding: 10px;
+        margin-top:10px;
+        border-radius: 10px;
+        outline: none;
+        border:1px solid lightblue;
+    }
+    .btn{
+        display: flex;
+        padding: 15px;
+        margin-bottom: 10px;
+        width: 50%;
+    }
+    button{
+        padding: 10px;
+        font-weight: bold;
+        background-color: blue;
+        outline: none;
+        border-color: lightblue;
+        border-radius: 10px;
+        width: 100%;
+        color: white;
+    }
+    .inbtm{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    span{   
+        margin: 0px 30px 10px 40px;
+        color: crimson;
+        margin-bottom: 10px;
+    }
+</style>
+<body>
+    <div class="formr">
+    <form class="loginp" action="" >
+        <div class="in">
+            <label>Username</label>
+            <input type="text" placeholder="Enter Your Username" name="data" id="data">
+        </div>
+        <div class="in">
+            <label>Email</label>
+            <input type="text" placeholder="Enter Your Email" email="data" id="em">
+        </div>
+        <div class="in">
+            <label>Password</label>
+            <input type="text" placeholder="Enter Your Password" password="data" id="pass">
+        </div>
+        <div class="btn">
+            <button onclick="sConsole(event)">Submit</button>
+        </div>
+        <div class="inbtm">
+            <span>Create an Account</span>
+            <span>Forgot Password?</span>
+        </div>
+    </form>
+    </div>
+<script>
+    function sConsole(event){
+        event.preventDefault();
+  var data = document.getElementById("data").value;
+  var data1 = document.getElementById("em").value;
+  var data2 = document.getElementById("pass").value;
+  console.log(data+" "+data1+" "+data2);
+
+    }
+</script>
+</body>
+</html>
