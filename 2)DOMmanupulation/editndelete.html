@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <header id="main-header" class="bg-success text-white p-4 mb-3">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+                <h1 id="header-title">Item Lister</h1>
+            </div>
+            <div class="col-md-6 align-self-center">
+                <input type="text" class="form-control" id="filter" placeholder="Search Items...">
+            </div>
+          </div>
+        </div>
+      </header>
+      <div class="container">
+       <div id="main" class="card card-body">
+        <h2 class="title">Add Items</h2>
+        <form id="addForm" class="form-inline mb-3">
+          <input type="text" class="form-control mr-2" id="item">
+          <input type="submit" class="btn btn-dark" value="Submit">
+        </form>
+        <h2 class="title">Items</h2>
+        <ul id="items" class="list-group">
+          <li class="list-group-item">Item 1 <button class="btn btn-danger btn-sm float-right delete">X</button></li>
+          <li class="list-group-item">Item 2 <button class="btn btn-danger btn-sm float-right delete">X</button></li>
+          <li class="list-group-item">Item 3 <button class="btn btn-danger btn-sm float-right delete">X</button></li>
+          <li class="list-group-item">Item 4 <button class="btn btn-danger btn-sm float-right delete">X</button></li>
+        </ul>
+       </div>
+      </div>
+
+
+      <script>
+let frm=document.getElementById("addForm");
+let itmlst=document.querySelector("#items");
+
+
+
+//1)add item
+
+//form submit event to add the item to the list
+frm.addEventListener("submit",additm);
+
+function additm(e){
+    e.preventDefault();
+
+    //get input val
+    let nwitm=document.querySelector("#item").value;
+
+    //create new li elem
+    let li =document.createElement("li");
+    li.className="list-group-item";
+
+    let txt=document.createTextNode(nwitm);
+    li.appendChild(txt);
+
+    //add delete button
+
+    let dbt=document.createElement("button");
+    dbt.className="btn btn-danger btn-sm float-right delete";
+
+    let inbt=document.createTextNode("X");
+    dbt.appendChild(inbt);
+    //append button to li
+   li.appendChild(dbt);
+
+//append li to ul
+    itmlst.appendChild(li);
+
+
+    //3) add edit button next to the delete button
+let edtbt=document.createElement("button");
+edtbt.className="btn btn-success btn-sm float-right mr-1 edit";
+edtbt.appendChild(document.createTextNode("edit"));
+li.appendChild(edtbt);
+itmlst.appendChild(li);
+}
+
+
+//2)delete item
+
+// click event to remove item from the list
+
+itmlst.addEventListener("click",rmvitm);
+
+function rmvitm(e){
+    if(e.target.classList.contains("delete")){
+        if(confirm("are you sure?")){
+          let li=e.target.parentElement;
+          itmlst.removeChild(li);
+        }
+    }
+}
+
+
+
+      </script>
+</body>
+</html>
