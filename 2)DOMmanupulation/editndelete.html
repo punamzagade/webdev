@@ -123,7 +123,9 @@ let itms=itmlst.getElementsByTagName("li");
 let arritms = Array.from(itms);
 arritms.forEach(function(elem){
   let itmNme=elem.firstChild.textContent;
+  //to find the value of desc
   let itmNme1=elem.lastChild.textContent;
+  //adding strings together
   let itmNme2=itmNme+itmNme1;
 
   if(itmNme2.toLocaleLowerCase().indexOf(txtlwrcse) !==-1){
