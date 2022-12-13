@@ -25,6 +25,7 @@
         <h2 class="title">Add Items</h2>
         <form id="addForm" class="form-inline mb-3">
           <input type="text" class="form-control mr-2" id="item">
+          <input type="text" class="form-control mr-2" id="item1">
           <input type="submit" class="btn btn-dark" value="Submit">
         </form>
         <h2 class="title">Items</h2>
@@ -41,7 +42,7 @@
       <script>
 let frm=document.getElementById("addForm");
 let itmlst=document.querySelector("#items");
-
+let fltr=document.getElementById("filter");
 
 
 //1)add item
@@ -82,6 +83,12 @@ edtbt.className="btn btn-success btn-sm float-right mr-1 edit";
 edtbt.appendChild(document.createTextNode("edit"));
 li.appendChild(edtbt);
 itmlst.appendChild(li);
+
+
+//5)add description next to the item
+var desc=document.getElementById("item1").value;
+li.appendChild(document.createTextNode(" "+desc));
+itmlst.appendChild(li);
 }
 
 
@@ -100,6 +107,32 @@ function rmvitm(e){
     }
 }
 
+
+// 4) filter items
+//keyup event to filter an item
+fltr.addEventListener("keyup",filteritm);
+
+function filteritm(e){
+//conver text to lowercase
+var txtlwrcse=e.target.value.toLowerCase();
+
+//get list
+let itms=itmlst.getElementsByTagName("li");
+
+// convert to an array
+let arritms = Array.from(itms);
+arritms.forEach(function(elem){
+  let itmNme=elem.firstChild.textContent;
+  let itmNme1=elem.lastChild.textContent;
+  let itmNme2=itmNme+itmNme1;
+
+  if(itmNme2.toLocaleLowerCase().indexOf(txtlwrcse) !==-1){
+    elem.style.display="block";
+  }else{
+    elem.style.display="none";
+  }
+})
+}
 
 
       </script>
