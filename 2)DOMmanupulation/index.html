@@ -59,21 +59,29 @@
 
 
 // //by classname
-let itm=document.getElementsByClassName("list-group-item");
-itm[2].style.backgroundColor="green";
+// let itm=document.getElementsByClassName("list-group-item");
+// itm[2].style.backgroundColor="green";
 
-//to make all list elements bold 
-for(let i=0;i<itm.length;i++){
-itm[i].style.fontWeight="bold";
-}
+// //to make all list elements bold 
+// for(let i=0;i<itm.length;i++){
+// itm[i].style.fontWeight="bold";
+// }
 
-let itm1=document.getElementsByTagName("li");
+//by tagname
+// let itm1=document.getElementsByTagName("li");
 
 
-//to make all list elements bold 
-for(let i=0;i<itm1.length;i++){
-itm1[i].style.color="blue";
-}
+// //to make all list elements bold 
+// for(let i=0;i<itm1.length;i++){
+// itm1[i].style.color="blue";
+// }
+
+//by Queryselector and queryselectorall
+let lst=document.querySelector(".list-group-item:nth-child(2)");
+lst.style.backgroundColor="green";
+
+let lst1=document.querySelector(".list-group-item:nth-child(3)");
+lst1.style.visibility="hidden";
 
 
   </script>
