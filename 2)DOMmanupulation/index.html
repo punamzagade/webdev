@@ -83,14 +83,114 @@
 // let lst1=document.querySelector(".list-group-item:nth-child(3)");
 // lst1.style.visibility="hidden";
 
-let it1=document.querySelectorAll(".list-group-item");
-it1[1].style.color="green";
+// let it1=document.querySelectorAll(".list-group-item");
+// it1[1].style.color="green";
 
-it2=document.querySelectorAll("li:nth-child(odd)");
-for(let i=0;i<it2.length;i++){
-  it2[i].style.backgroundColor="green";
-}
+// it2=document.querySelectorAll("li:nth-child(odd)");
+// for(let i=0;i<it2.length;i++){
+//   it2[i].style.backgroundColor="green";
+// }
 
+
+
+// Creating Nodes and Modifying Dom
+
+let prnt=document.querySelector("#items");
+let tt=document.querySelector(".form-inline");
+
+// parentElement and parentNode are work same
+// console.log(prnt.parentElement);
+// console.log(prnt.parentElement.parentElement);
+// console.log(prnt.parentElement.parentElement.parentElement);
+// prnt.parentElement.style.backgroundColor="lightblue"
+
+// //children
+// console.log(prnt.children);
+// console.log(prnt.children[1]);
+// prnt.children[1].style.backgroundColor="pink";
+
+// lastelementchild
+// console.log(prnt.lastElementChild);
+// prnt.lastElementChild.style.color="blue";
+
+// lastchild(we didnt get any child)
+// console.log(prnt.lastChild);         //useless to use => it gives text bcz of next line
+
+// createchild
+
+// firstelementchild
+// console.log(prnt.firstElementChild);
+// prnt.firstElementChild.style.color="red";
+
+// firstchild(we didnt get any child)
+// console.log(prnt.firstChild);    //useless to use => it gives text bcz of next line
+
+// nextsibling(we didnt get any child)
+// console.log(tt.nextSibling);             //useless to use => it gives text bcz of next line
+
+// nextelementsibling
+// console.log(tt.nextElementSibling);
+
+// previoussibling(we didnt get any child)
+// console.log(tt.previousSibling);            //useless to use => it gives text bcz of next line
+
+// previouselementsibling
+// console.log(tt.previousElementSibling);
+
+// createelement =follow the steps
+
+// //1)create new div
+// let nwdiv=document.createElement("div");
+
+// //2)add class
+// nwdiv.className="crtdiv";
+
+// //3)add id
+// nwdiv.id="crtdivid";
+
+// //4)setAttribute
+// nwdiv.setAttribute("title","hello div");
+
+// //5)createtesxtnode
+// let inrtext=document.createTextNode("hello world");
+
+// //6)appendchild
+// nwdiv.appendChild(inrtext);
+
+// console.log(nwdiv);
+
+//now insert this new div between the container and h1 tag
+
+// let cont=document.querySelector("header .container");
+// let h1=document.querySelector("header h1");
+
+// cont.insertBefore(nwdiv,h1);
+
+// assignments
+// 1) add HEllo word before Item Lister
+
+let nelm=document.createElement("div");
+nelm.className="elemcls"
+nelm.id="elemid";
+nelm.setAttribute("title","hello");
+let txt=document.createTextNode("HELLO");
+nelm.appendChild(txt);
+console.log(nelm);
+
+
+let cont=document.querySelector("header .container");
+let h1=document.querySelector("header h1");
+
+cont.insertBefore(nelm,h1);
+
+
+// 2) HEllo word before Item 1
+
+let cont1=document.querySelector("#main #items");
+console.log(cont1)
+let h2=document.querySelector("ul .list-group-item");
+
+cont1.insertBefore(nelm,h2);
 
   </script>
 </body>
