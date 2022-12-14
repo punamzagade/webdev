@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <form action="" id="frm">
+      <input type="text" id="sub">
+      <button class="btn">submit</button>
+    </form>
+  </div>
+
+  <script>
+let frm=document.getElementById("frm");
+
+//1)add item
+
+//form submit event to add the item to the list
+frm.addEventListener("submit",additm);
+
+function additm(e){
+    e.preventDefault();
+    let data=document.getElementById("sub").value;
+    console.log(data);
+    localStorage.setItem("newuser",data);
+    console.log(localStorage.getItem("newuser"));
+}
+
+
+  </script>
+</body>
+</html>
