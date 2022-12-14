@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appoinment App</title>
+</head>
+<body>
+  <div id="container">
+    <form action="" id="frm">
+      <input type="text" id="nme" placeholder="name">
+      <input type="text" id="email" placeholder="email">
+      <button class="btn">submit</button>
+     
+    </form>
+    <br/>
+    <h1 style="display: none;">hi</h1>
+  </div>
+  <script>
+    let frm=document.getElementById("frm");
+    frm.addEventListener("submit",adduser);
+
+    function adduser(e){
+      e.preventDefault();
+     
+let nme=document.getElementById("nme").value;
+let eml=document.getElementById("email").value;
+
+//create new user
+let dv=document.createElement("div");
+dv.className="itemslist";
+var ul=document.createElement("ul");
+ul.id="items";
+
+let li=document.createElement("li");
+li.className="item";
+let txt=document.createTextNode(nme+" : "+eml);
+li.appendChild(txt);
+ul.appendChild(li);
+dv.appendChild(ul);
+// console.log(dv);
+
+//create button
+let btn1=document.createElement("button");
+btn1.id="btn1";
+let btn2=document.createElement("button");
+btn2.id="btn2";
+btn2.className="delete"
+
+let btn1t=document.createTextNode("edit");
+let btn2t=document.createTextNode("delete");
+
+btn1.appendChild(btn1t);
+btn2.appendChild(btn2t);
+
+// btn1.appendChild(btn2);
+li.appendChild(btn1);
+li.appendChild(btn2);
+ul.appendChild(li);
+dv.appendChild(ul);
+console.log(dv);
+
+//insert div 
+
+let cont=document.querySelector("#container");
+// console.log(cont)
+let sct=document.querySelector("#container h1");
+// console.log(sct);
+cont.insertBefore(dv,sct);  
+// console.log(cont);
+
+
+//store the users in localstorage
+let obj={
+  "name":nme,
+  "email":eml
+}
+let obj1=JSON.stringify(obj);
+localStorage.setItem(nme,obj1);
+let obj2=localStorage.getItem(nme);
+let obj22=JSON.parse(obj2)
+let obj23=obj22["name"]+" : "+obj22["email"];
+// console.log((obj22["name"]+" : "+obj22["email"]));
+  
+
+//remove user from the document
+ 
+ul.addEventListener("click",rmv);
+
+function rmv(e){
+  // console.log(e.target.classList.contains("delete"));
+    if(e.target.classList.contains("delete")){
+        if(confirm("are you sure?")){
+          let li=e.target.parentElement;
+          console.log(obj23);
+          let chld=li.firstChild;
+          console.log(chld.data)
+          
+          if(obj23==chld.data){
+          // console.log(li.firstChild);
+          // console.log(obj);
+         
+          ul.removeChild(li);
+          localStorage.removeItem(obj22["name"]);
+
+        }
+        
+        }
+    }
+}
+}
+
+  </script>
+  
+</body>
+</html>
