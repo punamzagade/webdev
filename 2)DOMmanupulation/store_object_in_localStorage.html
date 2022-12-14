@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <form action="" id="frm">
+        <input type="text" placeholder="name" class="sub" />
+        <input type="text" placeholder="lastName" class="sub" />
+        <input type="text" placeholder="gender" class="sub" />
+        <button class="btn">submit</button>
+      </form>
+    </div>
+
+    <script>
+
+//TASK
+
+let obj = {
+          "name": "veer",
+          "lastName": "verma",
+         " gender": "male",
+        };
+
+        //convert an object into string
+          let obj1 = JSON.stringify(obj);
+          console.log(obj1);
+          localStorage.setItem("user", obj1);
+     
+
+        let obj2 = localStorage.getItem("user");
+        // convert string into object
+        let nwuser = JSON.parse(obj2);
+        console.log(nwuser);
+
+
+
+//  TAKE THE INPUT ON BROWSER
+
+    //   let frm = document.getElementById("frm");
+
+    //   frm.addEventListener("submit", additm);
+
+    //   function additm(e) {
+    //     e.preventDefault();
+    //     let data = document.querySelectorAll(".sub");
+    //     let arr = Array.from(data);
+
+    //     let obj = {
+    //       "name": arr[0].value,
+    //       "lastName": arr[1].value,
+    //       "gender": arr[2].value,
+    //     };
+
+    //     if (obj["name"] == "" || obj["lastName"] == "" || obj["gender"] == "") {
+    //       alert("fill the all fields");
+    //     } else {
+    //       let obj1 = JSON.stringify(obj);
+    //       // console.log(obj1);
+    //       localStorage.setItem("userInfo", obj1);
+    //     }
+
+    //     let obj2 = localStorage.getItem("userInfo");
+    //     let nwuser = JSON.parse(obj2);
+    //     //  console.log(nwuser);
+    //   }
+
+
+
+
+    </script>
+  </body>
+</html>
