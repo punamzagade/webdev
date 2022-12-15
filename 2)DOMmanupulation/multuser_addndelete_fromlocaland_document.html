@@ -12,7 +12,6 @@
       <input type="text" id="nme" placeholder="name">
       <input type="text" id="email" placeholder="email">
       <button class="btn">submit</button>
-     
     </form>
     <br/>
     <h1 style="display: none;">hi</h1>
@@ -23,25 +22,68 @@
 
     function adduser(e){
       e.preventDefault();
-     
-let nme=document.getElementById("nme").value;
+
+    //1)get the input value
+ 
+    let nme=document.getElementById("nme").value;
 let eml=document.getElementById("email").value;
 
-//create new user
-let dv=document.createElement("div");
+    //2)store the users in localstorage
+    //create object
+let obj={
+  "name":nme,
+  "email":eml
+}
+
+// convert object into JSON string
+
+let obj1=JSON.stringify(obj);
+console.log(obj1);
+console.log(obj.email);
+localStorage.setItem(eml,obj1);
+
+//3)get userdetails from local storage
+
+let obj2=localStorage.getItem(eml);
+
+// convert JSON string into object
+let obj22=JSON.parse(obj2);
+let obj23=obj22.name+":"+obj22.email;
+
+// //get the value of email
+// console.log(obj22.email);
+
+//4)store the users on browser document
+
+//1)create div lists
+
+  let dv=document.createElement("div");
 dv.className="itemslist";
 var ul=document.createElement("ul");
 ul.id="items";
 
 let li=document.createElement("li");
 li.className="item";
-let txt=document.createTextNode(nme+" : "+eml);
-li.appendChild(txt);
+
+
+//2)insert dv in container after form
+let point1=document.querySelector("#container");
+let point2=document.querySelector("#container h1");
+ point1.insertBefore(dv,point2);
+
 ul.appendChild(li);
 dv.appendChild(ul);
-// console.log(dv);
+console.log(dv);
 
-//create button
+
+//3)add user 
+let txt=document.createTextNode(obj23);
+li.appendChild(txt);
+// input field empty after submit 
+document.getElementById("nme").value="";
+document.getElementById("email").value="";
+
+//4)create button
 let btn1=document.createElement("button");
 btn1.id="btn1";
 let btn2=document.createElement("button");
@@ -54,37 +96,10 @@ let btn2t=document.createTextNode("delete");
 btn1.appendChild(btn1t);
 btn2.appendChild(btn2t);
 
-// btn1.appendChild(btn2);
 li.appendChild(btn1);
 li.appendChild(btn2);
-ul.appendChild(li);
-dv.appendChild(ul);
-console.log(dv);
 
-//insert div 
-
-let cont=document.querySelector("#container");
-// console.log(cont)
-let sct=document.querySelector("#container h1");
-// console.log(sct);
-cont.insertBefore(dv,sct);  
-// console.log(cont);
-
-
-//store the users in localstorage
-let obj={
-  "name":nme,
-  "email":eml
-}
-let obj1=JSON.stringify(obj);
-localStorage.setItem(nme,obj1);
-let obj2=localStorage.getItem(nme);
-let obj22=JSON.parse(obj2)
-let obj23=obj22["name"]+" : "+obj22["email"];
-// console.log((obj22["name"]+" : "+obj22["email"]));
-  
-
-//remove user from the document
+//5)delete user from the document and the localstorage
  
 ul.addEventListener("click",rmv);
 
@@ -93,22 +108,38 @@ function rmv(e){
     if(e.target.classList.contains("delete")){
         if(confirm("are you sure?")){
           let li=e.target.parentElement;
-          console.log(obj23);
+          // console.log(obj23);
+
           let chld=li.firstChild;
-          console.log(chld.data)
+          // console.log(li.firstChild);
+          // console.log(chld.data);
           
           if(obj23==chld.data){
-          // console.log(li.firstChild);
-          // console.log(obj);
-         
           ul.removeChild(li);
-          localStorage.removeItem(obj22["name"]);
-
+          localStorage.removeItem(obj22.email);
         }
         
         }
     }
 }
+
+
+// //if useremail alraedy exist then only update the name of the user;
+// let chld=li.firstChild.data;
+// console.log(typeof(chld));    //string
+// let str=chld.split(":")[1];    
+// console.log(str);
+// debugger;
+// if((li.data)!==null){
+//   if(str!==eml){
+// li.appendChild(txt);
+// }else {
+// li.remove(txt);
+// }
+// }else{
+//   li.appendChild(txt);
+// }
+
 }
 
   </script>
