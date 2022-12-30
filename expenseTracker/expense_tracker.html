@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container mt-5 d-flex align-items-center justify-content-center flex-column p-5 border-1 bg-light col-6">
+      <div class="mb-3 col-6">
+        <label for="exampleFormControlInput1" class="form-label">Expense Money</label>
+        <input type="number" class="form-control" id="item1">
+      </div>
+
+      <div class="mb-3 col-6">
+        <label for="browser" class="form-label">Choose a Category</label>
+        <input class="form-control" list="Expense" name="browser" id="item2">
+        <datalist id="Expense">
+          <option value="petrol">
+          <option value="Mango">
+          <option value="Pizza">
+          <option value="sprite">
+        </datalist>
+      </div>
+
+      <div class="mb-3 col-6">
+        <label for="browser" class="form-label">Choose a Category</label>
+        <input class="form-control" list="Section" name="browser" id="item3">
+        <datalist id="Section">
+          <option value="Fuel">
+          <option value="Toffy">
+          <option value="Food">
+          <option value="Coldrinks">
+        </datalist>
+    </div>
+      
+        <div class="mb-3 col-6">
+           
+            <button type="button" id="submit" class="btn btn-primary">add Expense</button>
+    </div>
+    </div>
+    <ul id="tables">
+    </ul>
+
+    <script>
+const submit=document.getElementById("submit");
+const ul=document.getElementById('tables');
+
+submit.addEventListener('click',test);
+function test(e)
+{
+//    e.preventDefault();
+    const i1=document.getElementById("item1").value;
+    const i2=document.getElementById("item2").value;
+    const i3=document.getElementById("item3").value;
+if(i1!='' || i2!='' || i3!="")
+{
+    const myobj={
+        i1:i1,
+        i2:i2,
+        i3:i3
+    }
+
+    const serilazation=JSON.stringify(myobj);
+    localStorage.setItem(i3,serilazation);
+   // const deserilization=JSON.parse(myobj);
+
+   Object.keys(localStorage).forEach((key) => {
+    stringifiedDetailsOfPeople = localStorage.getItem(key);
+    detailsOfPeople = JSON.parse(stringifiedDetailsOfPeople);
+    addNewLineElement(detailsOfPeople);
+    
+    });
+
+
+}
+}
+
+window.addEventListener('DOMContentLoaded', (event) => {
+    Object.keys(localStorage).forEach(key => {
+        const user = JSON.parse(localStorage.getItem(key))
+        addNewLineElement(user)
+    })
+})
+
+function addNewLineElement(obj)
+{
+    let li=`<li style="" id=${obj.i3}> ${obj.i1} - ${obj.i2}-${obj.i3}
+    <button onclick=deleteUser('${obj.i3}')> Delete User </button>
+    <button onclick=editUserDetails('${obj.i2}','${obj.i1}','${obj.i3}')>Edit User </button>
+ </li>`
+    
+    ul.innerHTML+=li;
+}
+
+
+function deleteUser(i3) {
+    localStorage.removeItem(i3)
+    console.log(i3)
+    removeItemFromScreen(i3)
+}
+
+function removeItemFromScreen(i3){
+    const parentNode = document.getElementById('tables');
+    const elem = document.getElementById(i3)
+    parentNode.removeChild(elem);
+}
+
+
+function editUserDetails(i2, i1,i3){
+
+    document.getElementById('item2').value = i2
+    document.getElementById('item3').value = i3;
+    document.getElementById('item1').value = i1;
+ }
+
+    </script>
+</body>
+</html>
