@@ -57,11 +57,15 @@ axios.post("https://crudcrud.com/api/452c3a01f7d946238584030a7eecee4f/bookapp",m
 }
 }
 
-window.addEventListener('DOMContentLoaded', (event) => {
-    Object.keys(localStorage).forEach(key => {
-        const user = JSON.parse(localStorage.getItem(key))
-        addNewLineElement(user)
-    })
+window.addEventListener('DOMContentLoaded', () => {    
+axios.get("https://crudcrud.com/api/452c3a01f7d946238584030a7eecee4f/bookapp")
+.then((res)=>{
+    console.log(res.data);
+    for(let elem of res.data){
+        addNewLineElement(elem);
+    }
+}).catch((err)=>console.log(err));
+
 })
 
 function addNewLineElement(obj)
