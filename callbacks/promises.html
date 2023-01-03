@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //       const posts = [
+      //         { title: "post1", body: "this is post one"},
+      //         { title: "post2", body: "this is post two"},
+      //       ];
+
+      //       function getPost() {
+      //           let output = "";
+      //           setTimeout(() => {
+      //             for (let elem of posts) {
+      //               output += `<li>${elem.title}</li>`;
+      //             }
+      //             document.body.innerHTML = output;
+      //           }, 1000);
+      //       }
+      //       function createPost(post) {
+      //         return new Promise((resolve,reject)=>{
+      //             setTimeout(()=>{
+      //                resolve(posts.push(post));
+      //                reject();
+      //             },1000)
+      //         })
+      //     }
+      //     function deletePost() {
+      //         return new Promise((resolve,reject)=>{
+      //             setTimeout(()=>{
+      //                 if(posts.length>0){
+      //                     resolve(posts.pop());
+      //                 }else{
+      //                     reject(console.log("already empty"));
+      //                 }
+      //             },1000)
+      //         })
+      //     }
+      // createPost({ title: "post3", body: "this is post three" }).then(getPost)
+      // .then(deletePost).catch((err)=>err)
+      // .then(getPost)
+      // .then(deletePost).catch((err)=>err)
+      // .then(getPost)
+      // .then(deletePost).catch((err)=>err)
+      // .then(getPost)
+      // .then(deletePost).catch((err)=>err)
+      // .then(createPost({ title: "post4", body: "this is post four" }))
+      // .then(getPost)
+      // .then(deletePost).catch((err)=>err)
+
+      // Promise.all
+
+      // const promise1=Promise.resolve("hello world");
+      // const promise2=10;
+      // const promise3=new Promise((resolve,reject)=>
+      // setTimeout(resolve,1000,"bye")
+      // );
+      // Promise.all([promise1,promise2,promise3]).then((values)=>console.log(values))
+
+      const posts = [
+        {
+          title: "post1",
+          body: "this is post one",
+          lastActivityTime: new Date("July 12, 2022").toLocaleString(),
+        },
+        {
+          title: "post2",
+          body: "this is post two",
+          lastActivityTime: new Date("dec 12, 2022").toLocaleString(),
+        },
+      ];
+      console.log(posts[1].lastActivityTime);
+      function getPost() {
+        let output = "";
+        setTimeout(() => {
+          for (let elem of posts) {
+            updateLastUserActivityTime();
+            output += `<li>${elem.title} Last Activity:${elem.lastActivityTime}</li>`;
+            console.log(`${elem.title} Last Activity:${elem.lastActivityTime}`);
+          }
+          document.body.innerHTML = output;
+        }, 2000);
+      }
+      function createPost(post) {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve(posts.push(post));
+            reject();
+          }, 1000);
+        });
+      }
+      function deletePost() {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            if (posts.length > 0) {
+              resolve(posts.pop());
+            } else {
+              reject(console.log("already empty"));
+            }
+          }, 3000);
+        });
+      }
+
+      function updateLastUserActivityTime() {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            for (let elem of posts) {
+              elem.lastActivityTime = new Date();
+              // elem.lastActivityTime = new Date().toLocaleDateString(new Date());
+              resolve(` ${elem.title} and ${elem.lastActivityTime}`);
+            }
+          }, 1000);
+        });
+      }
+
+      Promise.all([
+        createPost({
+          title: "Post3",
+          body: "This is post Three.",
+          lastActivityTime: new Date("feb 1, 2022").toLocaleString(),
+        }),
+        updateLastUserActivityTime,
+      ])
+        .then(() => getPost())
+        .then(() => {
+          deletePost().then(() => {
+            getPost();
+            updateLastUserActivityTime().then((t) => console.log(t));
+          });
+        });
+    </script>
+  </body>
+</html>
