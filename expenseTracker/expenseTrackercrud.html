@@ -67,7 +67,7 @@ const ule=document.getElementById('tables2');
 submit.addEventListener('click',test);
 function test(e)
 {
-//    e.preventDefault();
+   e.preventDefault();
     const i1=document.getElementById("item1").value;
     const i2=document.getElementById("item2").value;
     const i3=document.getElementById("item3").value;
@@ -78,15 +78,21 @@ if(i1!='' || i2!='' || i3!="")
         i2:i2,
         i3:i3
     }
- axios.post("https://crudcrud.com/api/0f9d269e268f4c5f9d254fb7dfc0abec/myapp",myobj)
+ axios.post("https://crudcrud.com/api/15753834df0e48c7893dd3a07c65ae43/myapp",myobj)
  .then((res)=>{
     console.log(res);
+    add(res.data)
  }).catch((err)=>console.log(err));
-}
+ 
+} 
+document.getElementById("item1").value="";
+document.getElementById("item2").value="";
+document.getElementById("item3").value="";
+
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-axios.get("https://crudcrud.com/api/0f9d269e268f4c5f9d254fb7dfc0abec/myapp")
+axios.get("https://crudcrud.com/api/15753834df0e48c7893dd3a07c65ae43/myapp")
 .then((res)=>{
 console.log(res.data);
 for (const val of res.data) {
@@ -99,9 +105,10 @@ for (const val of res.data) {
 
 function add(val){
     let li=`<li style="" id=${val._id}> ${val.i1} - ${val.i2}-${val.i3}
-    <button onclick=deleteUser('${val._id}','${val.i3}')> Delete Product </button>
-    <button onclick=editUserDetails('${val._id}','${val.i2}','${val.i1}','${val.i3}')>Edit Product </button>
+    <button onclick="deleteUser('${val._id}','${val.i3}')"> Delete Product </button>
+    <button onclick="editUserDetails('${val._id}','${val.i2}','${val.i1}','${val.i3}')">Edit Product </button>
  </li>`
+ console.log(val)
  if(val.i3=="Food"){
     ulf.innerHTML+=li;
   }
@@ -113,8 +120,8 @@ function add(val){
   }
 }
 
-function deleteUser(id) {
-    removeItemFromScreen(id)
+function deleteUser(id,i3) {
+    removeItemFromScreen(id,i3);
    
 }
 
@@ -134,20 +141,20 @@ function removeItemFromScreen(_id,i3){
         parentNode2.removeChild(elem);
     }
    
-    axios.delete(`https://crudcrud.com/api/0f9d269e268f4c5f9d254fb7dfc0abec/myapp/${_id}`)
+    axios.delete(`https://crudcrud.com/api/15753834df0e48c7893dd3a07c65ae43/myapp/${_id}`)
     .then((res)=>console.log(res.data._id)).catch((err)=>console.log(err));
 }
 
 
 function editUserDetails(_id,i2,i1,i3){
-    axios.put(`https://crudcrud.com/api/0f9d269e268f4c5f9d254fb7dfc0abec/myapp/${_id}`)
+    axios.put(`https://crudcrud.com/api/15753834df0e48c7893dd3a07c65ae43/myapp/${_id}`)
     .then((res)=>console.log(res)).catch((err)=>console.log(err));
 
     document.getElementById('item2').value = i2
     document.getElementById('item3').value = i3;
     document.getElementById('item1').value = i1;
 
-    deleteUser(_id)
+    deleteUser(_id,i3)
  }
 
     </script>
