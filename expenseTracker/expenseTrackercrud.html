@@ -78,7 +78,7 @@ if(i1!='' || i2!='' || i3!="")
         i2:i2,
         i3:i3
     }
- axios.post("https://crudcrud.com/api/15753834df0e48c7893dd3a07c65ae43/myapp",myobj)
+ axios.post("https://crudcrud.com/api/bd0ffc2b52b34c72ad63efc1524fd5ab/myapp",myobj)
  .then((res)=>{
     console.log(res);
     add(res.data)
@@ -92,7 +92,7 @@ document.getElementById("item3").value="";
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-axios.get("https://crudcrud.com/api/15753834df0e48c7893dd3a07c65ae43/myapp")
+axios.get("https://crudcrud.com/api/bd0ffc2b52b34c72ad63efc1524fd5ab/myapp")
 .then((res)=>{
 console.log(res.data);
 for (const val of res.data) {
@@ -141,20 +141,20 @@ function removeItemFromScreen(_id,i3){
         parentNode2.removeChild(elem);
     }
    
-    axios.delete(`https://crudcrud.com/api/15753834df0e48c7893dd3a07c65ae43/myapp/${_id}`)
+    axios.delete(`https://crudcrud.com/api/bd0ffc2b52b34c72ad63efc1524fd5ab/myapp/${_id}`)
     .then((res)=>console.log(res.data._id)).catch((err)=>console.log(err));
 }
 
 
 function editUserDetails(_id,i2,i1,i3){
-    axios.put(`https://crudcrud.com/api/15753834df0e48c7893dd3a07c65ae43/myapp/${_id}`)
+    axios.put(`https://crudcrud.com/api/bd0ffc2b52b34c72ad63efc1524fd5ab/myapp/${_id}`)
     .then((res)=>console.log(res)).catch((err)=>console.log(err));
 
     document.getElementById('item2').value = i2
     document.getElementById('item3').value = i3;
     document.getElementById('item1').value = i1;
 
-    deleteUser(_id,i3)
+    deleteUser(_id,i3);
  }
 
     </script>
